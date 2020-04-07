@@ -1,0 +1,16 @@
+on: push
+name: build
+jobs:
+  go-test:
+    name: Go Test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: go1.13  linters
+      uses: shoukoo/golang-pipeline/go1.13/linter@master
+      with:
+        STATICCHECK: on
+        ERRCHECK: on
+        GOLINT: on
+    - name: go1.13 test
+      uses: shoukoo/golang-pipeline/go1.13/test@master
